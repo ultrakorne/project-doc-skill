@@ -1,7 +1,7 @@
 ---
 name: project-documentation
-version: "0.2"
-description: "Create and maintain structured project documentation with progressive disclosure. Use when: (1) starting documentation for a new project, (2) adding documentation for a new feature, (3) updating docs after implementing changes, (4) reading project context before working on features. Triggers on phrases like 'document this', 'update the docs', 'add feature documentation', or when CLAUDE.md references this skill."
+version: "0.3"
+description: "Create, maintain, and query structured project documentation with progressive disclosure. Use when: (1) starting documentation for a new project, (2) adding documentation for a new feature, (3) updating docs after implementing changes, (4) reading project context before working on features, (5) answering questions about feature behavior or functionality (e.g., 'how does X work?', 'what does Y feature do?', 'explain the Z system'). When user asks about a feature, ALWAYS check docs/INDEX.md first to see if documentation exists. Triggers on phrases like 'document this', 'update the docs', 'add feature documentation', 'how does [feature] work', 'what does [feature] do', or when CLAUDE.md references this skill."
 context: fork
 agent: general-purpose
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash
