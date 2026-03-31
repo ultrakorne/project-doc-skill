@@ -12,8 +12,9 @@
 ## Tech Stack
 
 - **Framework**: <e.g., Phoenix/Elixir, Next.js, Unity>
-- **Database**: <e.g., PostgreSQL, Redis>
-- **Hosting**: <e.g., Fly.io, Vercel, AWS>
+- **Database**: <e.g., PostgreSQL, Redis> if relevant
+- **Hosting**: <e.g., Fly.io, Vercel, AWS> if relevant
+- **Other**: Any Relevant archutectural or infrastructructure if relevant
 
 ## Features
 
@@ -25,6 +26,7 @@
 
 - [Architecture Overview](architecture/OVERVIEW.md) *(if exists)*
 - [Getting Started](GETTING_STARTED.md) *(if exists)*
+- [Coding Conventions](CODING-CONVENTIONS.md) *(if exists)*
 ```
 
 ---
@@ -46,11 +48,6 @@
 | [TECHNICAL.md](TECHNICAL.md) | Implementation details, data models, APIs |
 | [FLOW.mermaid](FLOW.mermaid) | <description of what the diagram shows> |
 | [<topic>.md](<topic>.md) | <description of sub-component> |
-
-## Last Updated
-
-<YYYY-MM-DD>
-```
 
 ---
 
@@ -158,32 +155,6 @@ stateDiagram-v2
     Processing --> Failed: error
     Success --> [*]
     Failed --> Idle: retry
-```
-
----
-
-## Changelog
-
-`docs/features/{feature-name}/CHANGELOG.md` — Feature-specific history.
-
-```markdown
-# {Feature Name} — Changelog
-
-## <YYYY-MM-DD>
-
-### Added
-- <new capability>
-
-### Changed
-- <modification to existing behavior>
-
-### Fixed
-- <bug fix>
-
-## <YYYY-MM-DD>
-
-### Added
-- Initial implementation
 ```
 
 ---

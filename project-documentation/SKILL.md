@@ -1,7 +1,7 @@
 ---
 name: project-documentation
-version: "0.3"
-description: "Create, maintain, and query structured project documentation with progressive disclosure. Use when: (1) starting documentation for a new project, (2) adding documentation for a new feature, (3) updating docs after implementing changes, (4) reading project context before working on features, (5) answering questions about feature behavior or functionality (e.g., 'how does X work?', 'what does Y feature do?', 'explain the Z system'). When user asks about a feature, ALWAYS check docs/INDEX.md first to see if documentation exists. Triggers on phrases like 'document this', 'update the docs', 'add feature documentation', 'how does [feature] work', 'what does [feature] do', or when CLAUDE.md references this skill."
+version: "0.4"
+description: "Create, maintain, and query structured project documentation with progressive disclosure. Use when: (1) starting documentation for a new project, (2) adding documentation for a new feature, (3) after implementing a feature, trigger to update or create new documentation (4) reading project context before working on features, (5) answering questions about feature behavior or functionality (e.g., 'how does X work?', 'what does Y feature do?', 'explain the Z system'). When user asks about a feature, ALWAYS check docs/INDEX.md first to see if documentation exists. Triggers on phrases like 'document this', 'update the docs', 'add feature documentation', 'how does [feature] work', 'what does [feature] do', or when CLAUDE.md references this skill."
 context: fork
 agent: general-purpose
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash
@@ -49,19 +49,6 @@ docs/
 
 ## Workflows
 
-### Save Pending Plan (NOT YET IMPLEMENTED)
-
-**Use this workflow when**: The user asks to save/archive a plan that has NOT been implemented yet. This includes plans from plan mode, approved plans waiting for implementation, or deferred plans.
-
-**CRITICAL**: This workflow ONLY writes to `docs/plans/`. Do NOT create or modify DESIGN.md, TECHNICAL.md, or any feature documentation.
-
-1. Create `docs/plans/{feature-name}/` directory if it doesn't exist (use kebab-case)
-2. Save the plan as `YYYY-MM-DD-{description}.md` using the Archived Plan template
-3. Copy the plan content exactly as-is into the Plan section
-4. Set status to `Pending` or `Deferred`
-5. **STOP HERE** — do not touch feature docs
-
-Example: User says "save this plan" or "archive this plan" → Save to `docs/plans/` ONLY.
 
 ### Initialize Documentation (new project)
 
@@ -97,22 +84,18 @@ After implementing or modifying a feature:
 4. If flow changed → update `FLOW.mermaid`
 5. Optionally add entry to `CHANGELOG.md`
 
-### Archive a Plan (optional)
+### Save Pending Plan
 
-When an implementation plan is approved and worth preserving:
+**Use this workflow when**: The user asks to save/archive a plan that has NOT been implemented yet. This includes plans from plan mode, approved plans waiting for implementation, or deferred plans.
 
-1. Create `docs/plans/{feature-name}/` if it doesn't exist
-2. Save the plan as `YYYY-MM-DD-{description}.md` (e.g., `2025-01-18-initial-implementation.md`)
-3. Plans are immutable — never modify after archiving
+**CRITICAL**: This workflow ONLY writes to `docs/plans/`. Do NOT create or modify DESIGN.md, TECHNICAL.md, or any feature documentation.
 
-**When to archive plans:**
-- After a plan is approved and implementation begins/completes
-- When implementation is deferred but the plan should be preserved
-- When user explicitly requests to save a plan
+1. Create `docs/plans/{feature-name}/` directory if it doesn't exist (use kebab-case)
+2. Save the plan as `YYYY-MM-DD-{description}.md` using the Archived Plan template
+3. Copy the plan content exactly as-is into the Plan section
+4. Set status to `Pending` or `Deferred`
 
-**When NOT to archive:**
-- Quick iterations that don't need historical record
-- Plans that were rejected or superseded before approval
+Example: User says "save this plan" or "archive this plan" → Save to `docs/plans/` ONLY.
 
 ### Migrate Existing Documentation
 
@@ -132,6 +115,7 @@ When an implementation plan is approved and worth preserving:
 - **TECHNICAL.md answers**: How is it built? What's the data model? What are the APIs/interfaces?
 - **Use FLOW.mermaid when**: The feature has a multi-step flow, state machine, or complex interactions
 - **Break out sub-components when**: A topic is complex enough that it clutters the main docs and is only relevant for specific tasks
+- **Do not add timestamps**: To any INDEX or documentation files. remove if timestamp is found.
 
 ## Templates
 
