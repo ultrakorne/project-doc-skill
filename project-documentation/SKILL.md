@@ -23,7 +23,6 @@ docs/
         ├── DESIGN.md             # Required: what/why, requirements, user stories
         ├── TECHNICAL.md          # Required: how, implementation, data models
         ├── FLOW.mermaid          # Optional: visual diagrams
-        ├── CHANGELOG.md          # Optional: feature change history
         └── [topic].md            # Optional: sub-components (scoring.md, etc.)
 ```
 

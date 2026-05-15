@@ -13,3 +13,8 @@ ask your agent. do a feature and then just ask to document the feature
 all docs are going to be store in docs/
 
 explore the structure with `tree docs` after the first doc is created
+
+## Attribution
+
+grill with docs is heavily based on <https://github.com/mattpocock/skills>
+I incorporated the context into the project-documentation skill and have the grill one use that structure
