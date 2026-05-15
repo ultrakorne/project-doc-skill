@@ -21,7 +21,7 @@ FILES_TO_COPY=(".mcp.json" ".env.local" "opencode.jsonc")
 # Go/PHP/Ruby (`vendor`). Avoid caches with embedded absolute paths
 # (e.g. Python `.venv`, Rust `target`) — those don't survive a copy.
 # These are treated as cache warmups: failures are non-fatal.
-DIRS_TO_COPY=("deps" "_build" "node_modules" "vendor")
+DIRS_TO_COPY=("deps" "_build" "node_modules" "assets/node_modules" "vendor")
 
 # `sed -i` takes different args on GNU (Linux) vs BSD (macOS). Detect once.
 if sed --version >/dev/null 2>&1; then
@@ -83,8 +83,8 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-TARGET_DIR=$1
-BRANCH_NAME=$1
+TARGET_DIR=${1%/}
+BRANCH_NAME=${1%/}
 
 if [ -d "$TARGET_DIR" ]; then
   if [[ ! "$TARGET_DIR" =~ ^task[0-9][0-9]+$ ]] && [ "$TARGET_DIR" != "develop" ]; then

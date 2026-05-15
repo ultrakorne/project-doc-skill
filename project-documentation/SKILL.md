@@ -22,20 +22,15 @@ To disable background execution, remove `context: fork` from the frontmatter.
 ```
 docs/
 ├── INDEX.md                      # Master TOC - ALWAYS read first
-├── features/
-│   └── feature-name/
-│       ├── INDEX.md              # Feature TOC - read when working on feature
-│       ├── DESIGN.md             # Required: what/why, requirements, user stories
-│       ├── TECHNICAL.md          # Required: how, implementation, data models
-│       ├── FLOW.mermaid          # Optional: visual diagrams
-│       ├── CHANGELOG.md          # Optional: feature change history
-│       └── [topic].md            # Optional: sub-components (scoring.md, etc.)
-└── plans/                        # Archived plans - NEVER auto-read
+└── features/
     └── feature-name/
-        └── YYYY-MM-DD-description.md
+        ├── INDEX.md              # Feature TOC - read when working on feature
+        ├── DESIGN.md             # Required: what/why, requirements, user stories
+        ├── TECHNICAL.md          # Required: how, implementation, data models
+        ├── FLOW.mermaid          # Optional: visual diagrams
+        ├── CHANGELOG.md          # Optional: feature change history
+        └── [topic].md            # Optional: sub-components (scoring.md, etc.)
 ```
-
-**Plans folder**: Stores approved implementation plans for historical reference. Plans are immutable after approval and are NOT read unless explicitly requested by the user.
 
 ## Reading Pattern
 
@@ -45,7 +40,6 @@ docs/
    - Requirements/design questions → DESIGN.md
    - Implementation work → TECHNICAL.md
    - Specific subsystem → the relevant [topic].md
-4. **Never auto-read** `docs/plans/` — only read if user explicitly links or requests
 
 ## Workflows
 
@@ -55,7 +49,6 @@ docs/
 1. Create `docs/` directory in project root
 2. Create `docs/INDEX.md` using template from [references/templates.md](references/templates.md#master-index)
 3. Create `docs/features/` directory
-4. Create `docs/plans/` directory
 
 ### Add Feature Documentation (IMPLEMENTED FEATURES ONLY)
 
@@ -83,19 +76,6 @@ After implementing or modifying a feature:
 3. If new sub-components added → create `[topic].md` and update feature `INDEX.md`
 4. If flow changed → update `FLOW.mermaid`
 5. Optionally add entry to `CHANGELOG.md`
-
-### Save Pending Plan
-
-**Use this workflow when**: The user asks to save/archive a plan that has NOT been implemented yet. This includes plans from plan mode, approved plans waiting for implementation, or deferred plans.
-
-**CRITICAL**: This workflow ONLY writes to `docs/plans/`. Do NOT create or modify DESIGN.md, TECHNICAL.md, or any feature documentation.
-
-1. Create `docs/plans/{feature-name}/` directory if it doesn't exist (use kebab-case)
-2. Save the plan as `YYYY-MM-DD-{description}.md` using the Archived Plan template
-3. Copy the plan content exactly as-is into the Plan section
-4. Set status to `Pending` or `Deferred`
-
-Example: User says "save this plan" or "archive this plan" → Save to `docs/plans/` ONLY.
 
 ### Migrate Existing Documentation
 

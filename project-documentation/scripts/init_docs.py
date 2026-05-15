@@ -39,15 +39,12 @@ def init_docs(project_root: Path, project_name: str):
     """Initialize the docs structure."""
     docs_dir = project_root / "docs"
     features_dir = docs_dir / "features"
-    plans_dir = docs_dir / "plans"
-    
+
     # Create directories
     features_dir.mkdir(parents=True, exist_ok=True)
-    plans_dir.mkdir(parents=True, exist_ok=True)
     print(f"✅ Created {docs_dir}")
     print(f"✅ Created {features_dir}")
-    print(f"✅ Created {plans_dir}")
-    
+
     # Create INDEX.md
     index_path = docs_dir / "INDEX.md"
     if not index_path.exists():
@@ -55,15 +52,11 @@ def init_docs(project_root: Path, project_name: str):
         print(f"✅ Created {index_path}")
     else:
         print(f"⚠️  {index_path} already exists, skipping")
-    
-    # Create .gitkeep in features and plans to ensure they're tracked
+
+    # Create .gitkeep in features to ensure it's tracked
     gitkeep = features_dir / ".gitkeep"
     if not gitkeep.exists():
         gitkeep.touch()
-    
-    gitkeep_plans = plans_dir / ".gitkeep"
-    if not gitkeep_plans.exists():
-        gitkeep_plans.touch()
     
     print(f"\n🎉 Documentation structure initialized!")
     print(f"\nNext steps:")

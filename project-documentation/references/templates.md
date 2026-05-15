@@ -197,30 +197,3 @@ stateDiagram-v2
 
 <how this sub-component connects to the parent feature>
 ```
-
----
-
-## Archived Plan
-
-`docs/plans/{feature-name}/{YYYY-MM-DD}-{description}.md` — Preserved implementation plan.
-
-Plans are archived as-is after approval. Do not modify after archiving.
-
-```markdown
-# {Feature Name} — Plan: {Description}
-
-**Date**: <YYYY-MM-DD>
-**Status**: <Approved / Implemented / Deferred>
-
-## Context
-
-<why this plan was created — what problem it solves>
-
-## Plan
-
-<the implementation plan as approved — may be copied directly from the planning conversation>
-
-## Notes
-
-<any additional context, constraints, or decisions made during planning>
-```
